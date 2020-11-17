@@ -1,16 +1,31 @@
-let numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?", 1);
+'use strict';
+let numberOfFilms = prompt("Сколько фильмов вы посмотрели?"," ");
 let personalMovieDB = {
-    count : numberOfFilms   ,
-    movies : {},
-    actors : {},
-    genres : [],
-    privat : false
+    count: numberOfFilms,
+    movies: {},
+    actors:{},
+    genres: [],
+    privat: false
 };
-let LastFilm = prompt("Один из последних просмотренных фильмов?" ,
- "Пример : Шарик"),
- Rate = prompt("На сколько оцените его?", "1-10") ,
- LastFilm2 = prompt("Один из последних просмотренных фильмов?" ,
- "Пример : Шарик"),
- Rate2 = prompt("На сколько оцените его?", "1-10") ;
-personalMovieDB.movies[LastFilm] = Rate;
-personalMovieDB.movies[LastFilm2] = Rate2;
+
+let Question = [];
+let Raiting = [];
+let i = 1;
+for( i; i < 3; i++){
+     Question[i] = prompt("Один из последних просмотренных фильмов?");
+     Raiting[i] = prompt("Насколько оцените его?");
+     personalMovieDB.movies[Question[i]] = Raiting[i];
+}
+console.log(i);
+
+
+console.log(personalMovieDB.movies);
+if(personalMovieDB.count < 10 && personalMovieDB.count > 0){
+    console.log("Просмотрено довольно мало фильмов");
+} else if(personalMovieDB.count >=10 && personalMovieDB.count <= 30){
+    console.log("Вы классический зритель");
+} else if( personalMovieDB.count > 30) {
+    console.log("Вы киноман");
+} else  {
+    console.log("Произошла ошибка");
+}
