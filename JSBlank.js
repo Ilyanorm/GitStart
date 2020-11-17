@@ -10,13 +10,26 @@ let personalMovieDB = {
 
 let Question = [];
 let Raiting = [];
-let i = 1;
-for( i; i < 3; i++){
+
+for(let i = 1; i < 3; i++){
      Question[i] = prompt("Один из последних просмотренных фильмов?");
      Raiting[i] = prompt("Насколько оцените его?");
-     personalMovieDB.movies[Question[i]] = Raiting[i];
-}
-console.log(i);
+     
+     if(i <= 0){
+        i++;
+    }
+
+     if(numberOfFilms == "" || numberOfFilms == null){
+        let numberOfFilms = prompt("Сколько фильмов вы посмотрели?"," ");
+         i--;
+    } 
+    if (Question[i] == "" || Question[i] == null || Question[i].lenght > 50){
+        i--;
+    } else if(Raiting[i] == "" || Raiting[i] == null){
+        i--;
+    }  else {
+        personalMovieDB.movies[Question[i]] = Raiting[i];}
+    }
 
 
 console.log(personalMovieDB.movies);
